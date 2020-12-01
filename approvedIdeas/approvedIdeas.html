@@ -1,0 +1,30 @@
+<template>
+    <h2> Approved Idea List</h2>
+    <div class="slds-list_horizontal slds-has-inline-block-links_space">
+
+        <lightning-combobox name="Month Filter" label="Month" value={selectedMonthValue} placeholder="Select Month"
+            options={monthOptions} onchange={handleFilterChange}>
+        </lightning-combobox>
+        &nbsp;
+        <lightning-combobox name="Year Filter" label="Year" value={selectedYearValue} placeholder="Select Year"
+            options={yearOptions} onchange={handleFilterChange}>
+        </lightning-combobox>
+        &nbsp;
+        <lightning-combobox name="Technology Filter" label="Technology" value={selectedTechnologyValue}
+            placeholder="Select technology" options={technologyOptions} onchange={handleFilterChange}>
+        </lightning-combobox>
+
+    </div>
+    <br>
+    <template if:true={ideas.length}>
+        <lightning-datatable data={ideas} columns={ApprovedIdeacolumn} key-field="Id" hide-checkbox-column="true"
+            onrowaction={rowHandler}>
+        </lightning-datatable>
+
+    </template>
+
+    <template if:false={ideas.length}>
+        <p>No ideas available for this search</p>
+    </template>
+
+</template>

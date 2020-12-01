@@ -1,0 +1,20 @@
+<template>
+    <lightning-button label="Create New Idea" variant="brand" onclick={onCreate}></lightning-button>
+    &nbsp;&nbsp;
+    <lightning-button label="Approved Ideas" variant="brand" onclick={handleapprovedIdeas}></lightning-button>
+
+    &nbsp;&nbsp;
+    <lightning-button label="Pending Ideas" variant="brand" onclick={showIdeas}></lightning-button>
+    &nbsp;&nbsp;
+    <lightning-button label="Rejected ideas" variant="brand" onclick={handlerejectedideas}></lightning-button>
+    &nbsp;&nbsp;
+    <lightning-button label="My task" variant="brand" onclick={handlemytasks}></lightning-button>
+
+    &nbsp;&nbsp;
+    <lightning-button label="Score Board" variant="brand" onclick={handlescoreboard}></lightning-button>  
+    &nbsp;&nbsp;
+  <!--  <template if:true={ModerationFlag}>
+        <lightning-button label="Validation" variant="brand" onclick={handlevalidation}></lightning-button> 
+    </template>-->
+   
+</template>

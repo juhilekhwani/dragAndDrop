@@ -1,0 +1,41 @@
+[
+    {
+        "empId__c":"1010688",
+        "Name":"Deliveries App",
+        "Status__c":"Rejected",
+        "Description__c":"Turn drivers into sales, service, and operations heroes with\na mobile app that ends the need for paper and connects\nfield employees to each other and headquarters.",
+        "Submitter_Name__c":"Satya Kireet",
+        "Technology__c":"Salesforce",
+        "Score__c":0,
+        "LastModifiedDate":"2020-10-12T05:28:24.000Z",
+        "Reason__c":"not good",
+        "Id":"a022w00000FxQjJAAV",
+        "nameUrl":"https://ideaportal-developer-edition.ap16.force.com/s/detail/a022w00000FxQjJAAV"
+    },
+    {
+        "empId__c":"1011094",
+        "Name":"Rent a Car",
+        "Status__c":"Rejected",
+        "Description__c":"Car rental application where user can select the car whatever car he/she wants for rent. All the car details and car images will be there and also user can write a review for particular car.",
+        "Submitter_Name__c":"Rehman Khan",
+        "Technology__c":"Salesforce",
+        "Score__c":2,
+        "LastModifiedDate":"2020-09-30T04:25:37.000Z",
+        "Reason__c":"Can be implemented  later",
+        "Id":"a022w00000Ey4yfAAB",
+        "nameUrl":"https://ideaportal-developer-edition.ap16.force.com/s/detail/a022w00000Ey4yfAAB"
+    },
+    {
+        "empId__c":"1009402",
+        "Name":"Hotel management Application",
+        "Status__c":"Rejected",
+        "Description__c":"maintain feedback of customer, maintain orders, finance management",
+        "Submitter_Name__c":"Shrilekha Pawar",
+        "Technology__c":"Salesforce",
+        "Score__c":0,
+        "LastModifiedDate":"2020-09-18T11:27:59.000Z",
+        "Reason__c":"We can not proceed with this idea right now  due to limited resources. We can think about it in next quarter.",
+        "Id":"a022w00000Ey9ehAAB",
+        "nameUrl":"https://ideaportal-developer-edition.ap16.force.com/s/detail/a022w00000Ey9ehAAB"
+    }
+]

@@ -1,0 +1,24 @@
+<template>
+    <lightning-button label="New" onclick={createModule}></lightning-button>
+    <div class = "slds-m-around_medium">  
+        <lightning-input type = "search" onchange = {handleKeyChange} class = "slds-m-bottom_small" label = "Search" > 
+        </lightning-input>  
+        <template if:true = {searchedRecords}>  
+            <div style="height: 300px;">  
+                <lightning-datatable key-field="Id"  
+                                        data={searchedRecords}  
+                                        columns={columns}  
+                                        hide-checkbox-column="true"  
+                                        show-row-number-column="true"
+                                        onrowaction ={rowHandler}>  
+                </lightning-datatable> 
+                </div>
+                
+</template>
+<!-- <template if:true = {error}>  
+    {error}  
+</template>   -->
+        </div>
+    <!-- <lightning-datatable data={modules.data} columns={columns} key-field="Id" onrowaction ={rowHandler}> 
+    </lightning-datatable> -->
+</template>

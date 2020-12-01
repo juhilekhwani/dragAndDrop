@@ -1,0 +1,61 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/approvedModules": [
+                "approvedModules/approvedModules.js"
+            ],
+            "c/moduleIcon": [
+                "moduleIcon/moduleIcon.js"
+            ],
+            "c/moduleList": [
+                "moduleList/moduleList.js"
+            ],
+            "c/pendingModules": [
+                "pendingModules/pendingModules.js"
+            ],
+            "c/pubsub": [
+                "pubsub/pubsub.js"
+            ],
+            "c/rejectedModules": [
+                "rejectedModules/rejectedModules.js"
+            ],
+            "c/showModuleDetail": [
+                "showModuleDetail/showModuleDetail.js"
+            ],
+            "c/showModuleList": [
+                "showModuleList/showModuleList.js"
+            ],
+            "c/showModules": [
+                "showModules/showModules.js"
+            ],
+            "c/dragAndDropLwc": [
+                "dragAndDropLwc/dragAndDropLwc.js"
+            ],
+            "c/dragAndDropList": [
+                "dragAndDropList/dragAndDropList.js"
+            ],
+            "c/dragAndDropCard": [
+                "dragAndDropCard/dragAndDropCard.js"
+            ],
+            "c/dragAndDropTest": [
+                "dragAndDropTest/dragAndDropTest.js"
+            ]
+        }
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts"
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    },
+    "paths": {
+        "c/*": [
+            "*"
+        ]
+    }
+}

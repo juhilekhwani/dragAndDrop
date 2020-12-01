@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Projects" icon-name="custom:custom63">
+
+        <div class="slds-m-around_medium">
+            <template if:true={projects.data}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={projects.data}
+                    columns={columns}
+                    onrowaction={rowHandler}
+                   >
+                </lightning-datatable>
+            </template>
+           
+        </div>
+    </lightning-card>
+</template>

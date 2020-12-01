@@ -1,0 +1,15 @@
+<template>
+    <div class = "card_wrapper">
+        <template for:each={project.data} for:item="item" style={calcWidth}>
+            <div class = "projectContainer" key={item}>
+                <h1 class = "column_heading">{item.Name}</h1>
+                <!-- <c-drag-and-drop-list records={records} project={item} onlistitemdrag={handleListItemDrag}
+                onitemdrop={handleItemDrop}>
+    
+                </c-drag-and-drop-list> -->
+            </div>
+           
+        </template>
+    </div>
+    
+    </template>

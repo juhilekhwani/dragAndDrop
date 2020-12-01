@@ -1,0 +1,44 @@
+.card_wrapper{
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    background: #ffffff;
+}
+
+.column_heading{
+    padding: 0.5rem 0.25rem;
+    font-size: 16px;
+    background: #005fb2;
+    color:#fff;
+    margin-bottom: 1rem;
+}
+.projectContainer{
+    float: left;
+    border: 2px solid #d8dde6;
+    margin: 0.05rem;
+    border-radius: 0.25rem;
+    width: calc(100vw/2);
+    
+}
+.slds-modal__container{
+    width: 80% !important;
+    max-width: 80% !important;
+    height: 100% !important;
+}
+.modal-dialog {
+    height: 90%; /* = 90% of the .modal-backdrop block = %90 of the screen */
+  }
+  .slds-modal__content {
+    height: 100%; /* = 100% of the .modal-dialog block */
+  }
+  
+  
+  .vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  
+ 

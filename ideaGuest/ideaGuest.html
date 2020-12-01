@@ -1,0 +1,284 @@
+<template>
+
+<template if:true={optionflag}>
+
+    <lightning-button label="Create New Idea" variant="brand" onclick={onCreate}></lightning-button>
+    &nbsp;&nbsp;
+    <lightning-button label="Approved Ideas" variant="brand" onclick={handleapprovedIdeas}></lightning-button>
+
+    &nbsp;&nbsp;
+    <lightning-button label="Pending Ideas" variant="brand" onclick={showIdeas}></lightning-button>
+    &nbsp;&nbsp;
+    <lightning-button label="Rejected ideas" variant="brand" onclick={handlerejectedideas}></lightning-button>
+    &nbsp;&nbsp;
+    <lightning-button label="My task" variant="brand" onclick={handlemytasks}></lightning-button>
+
+    &nbsp;&nbsp;
+    <lightning-button label="Score Board" variant="brand" onclick={handlescoreboard}></lightning-button>
+    &nbsp;&nbsp;
+    
+</template>
+<br>
+
+<template if:true={flag}>
+    
+        <lightning-card title="Create Idea">
+     <lightning-record-form object-api-name='Idea__c' fields={fields} onsubmit={handlesubmitIdea} onsuccess={handleSuccess}>
+        <lightning-messages></lightning-messages>
+    </lightning-record-form>
+    <p style="color:red">Employees can submit 2 ideas a day</p>
+    <br><br>
+    <lightning-button label="Back to menu" variant="brand" onclick={backtomenu}></lightning-button>
+    </lightning-card>
+
+</template>
+
+
+
+<template if:true={uploadbutton}>
+    
+    <lightning-button label="Upload document" onclick={uploadDocument}></lightning-button>
+    <lightning-button label="Cancel" onclick={cancel}></lightning-button>
+    
+</template>
+
+<template if:true={fileflag}>
+    <lightning-card icon-name="custom:custom19" class="borderform">
+    <p style="color:red">File Formats supported are TXT,PDF,EXL,PPT,DOC </p>
+    <p style="color:red">MAX File size supported is 100KB  </p>
+        <lightning-input type="file"  label="Attachment" accept="image/*"
+            onchange={handleFilesChange} multiple>
+        </lightning-input>
+    </lightning-card>
+</template>
+
+
+<!--Show ideas-->
+
+<!---->
+
+<template if:true={showideaflag}>
+    <h2> Project Idea List</h2>
+ 
+        <div class="slds-list_horizontal slds-has-inline-block-links_space">
+           
+    <lightning-combobox name="Month Filter"
+                                    label="Month" value={selectedMonthValue} placeholder="Select Month"
+                                    options={monthOptions} onchange={handleFilterChange}>
+                                </lightning-combobox>
+&nbsp;
+            <lightning-combobox name="Year Filter"
+                                label="Year" value={selectedYearValue} placeholder="Select Year"
+                                options={yearOptions} onchange={handleFilterChange}>
+                            </lightning-combobox>
+                            &nbsp;
+           <lightning-combobox name="Technology Filter"
+                                    label="Technology" value={selectedTechnologyValue} placeholder="Select technology"
+                                    options={technologyOptions} onchange={handleFilterChange}>
+                                </lightning-combobox>
+   
+</div>
+<br>
+    <!--  <lightning-layout multiple-rows="true" vertical-align="end">
+        <lightning-layout-item size="12" small-device-size="10" medium-device-size="8" large-device-size="6"
+            padding="around-small">
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <lightning-input type="text" label="Enter Name" onchange={handleName}></lightning-input>
+                </div>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" small-device-size="2" medium-device-size="2" large-device-size="2"
+            padding="around-small">
+            <lightning-button label="Search" variant="brand" onclick={handleNameSearch}></lightning-button>
+        </lightning-layout-item>
+    </lightning-layout><br />-->
+    <template if:true={ideas.data.length}>
+        <lightning-datatable data={ideas.data} columns={columns} key-field="Id" hide-checkbox-column="true"
+            onrowaction={rowHandler}>
+        </lightning-datatable>
+        <template if:false={ideas.data.length}>
+            <p>No ideas for this search</p>
+            </template>
+    
+        <!-- <div class="slds-m-around_medium">
+            
+            <br></br>
+            <div style="height: 180px;">
+                <lightning-datatable 
+                    key-field="id"
+                    data={data}
+                    columns={columns} hide-checkbox-column="true" onrowaction={rowHandler}>
+                </lightning-datatable>
+            </div>
+        </div>
+        <div class="slds-m-around_medium">
+            <p class="slds-m-vertical_medium content">
+                        Displaying {startingRecord} to {endingRecord} of {totalRecountCount} records.
+                        Page {page} of {totalPage}. </p>
+            <c-paginator onprevious={previousHandler} onnext={nextHandler}></c-paginator>
+        </div>-->
+
+</template>
+</template>
+
+<!--model start here-->
+
+<template if:true={openmodel}>
+
+    <div class="demo-only" style="height: 640px;">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" size="medium">
+                        </lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit Idea</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+
+
+                        <!--  <lightning-record-edit-form object-api-name="Idea__c" record-id={editrecordId}
+                            onsuccess={closeModal} onsubmit={updateIdea}>
+
+                            <lightning-input-field field-name="Name">
+                            </lightning-input-field>
+                            <lightning-input-field field-name="Description__c">
+                            </lightning-input-field>
+
+
+                            <lightning-button label="Cancel" variant="neutral" onclick={closeModal}>
+                            </lightning-button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <lightning-button class="slds-m-top_small" type="submit" label="Update record">
+                            </lightning-button>
+                        </lightning-record-edit-form>-->
+                        <lightning-input name="Name"></lightning-input>
+                        <lightning-button class="slds-m-top_small" onclick={updateIdea}  label="Update record"></lightning-button>
+
+                </div>
+
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+</template>
+<!--model end here-->
+
+<!--rejected start-->
+
+
+<template if:true={rejectedflag}>
+    <h2> Project Idea List</h2>
+
+
+    <div class="slds-list_horizontal slds-has-inline-block-links_space">
+           
+        <lightning-combobox name="Month Filter"
+                                        label="Month" value={selectedMonthValue} placeholder="Select Month"
+                                        options={monthOptions} onchange={handleFilterChangeRejected}>
+                                    </lightning-combobox>
+    &nbsp;
+                <lightning-combobox name="Year Filter"
+                                    label="Year" value={selectedYearValue} placeholder="Select Year"
+                                    options={yearOptions} onchange={handleFilterChangeRejected}>
+                                </lightning-combobox>
+                                &nbsp;
+               <lightning-combobox name="Technology Filter"
+                                        label="Technology" value={selectedTechnologyValue} placeholder="Select technology"
+                                        options={technologyOptions} onchange={handleFilterChangeRejected}>
+                                    </lightning-combobox>
+       
+    </div>
+    <br>
+    <template if:true={rejectedIdeas.data}>
+        <lightning-datatable data={rejectedIdeas.data} columns={RejectIdeacolumns} key-field="Id"
+            hide-checkbox-column="true" onrowaction={rowHandler}>
+        </lightning-datatable>
+
+    </template>
+</template>
+
+
+<!--rejected end-->
+<!--task starts-->
+<template if:true={taskflag}>
+    <br>
+    <template if:true={allTasks.length}>
+        <p>{notaskmsg}</p>
+        <lightning-datatable data={allTasks} columns={columntask} key-field="Id" hide-checkbox-column="true"
+    onrowaction ={taskRowHandler}
+        
+        >
+        </lightning-datatable>
+
+    </template>
+    <template if:false={allTasks.length}>
+        <p>Currently no task assigned to you.</p>
+        </template>
+</template>
+<!--task end-->
+
+<template if:true={approvedflag}>
+    <h2> Approved Idea List</h2>
+
+
+
+   <!-- <lightning-layout multiple-rows="true" vertical-align="end">
+        <lightning-layout-item size="12" small-device-size="10" medium-device-size="8" large-device-size="6"
+            padding="around-small">
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <lightning-input type="text" onchange={handleName}></lightning-input>
+                </div>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" small-device-size="2" medium-device-size="2" large-device-size="2"
+            padding="around-small">
+            <lightning-button label="Search" variant="brand" onclick={handleApprovedNameSearch}></lightning-button>
+        </lightning-layout-item>
+    </lightning-layout><br />-->
+    <div class="slds-list_horizontal slds-has-inline-block-links_space">
+           
+        <lightning-combobox name="Month Filter"
+                                        label="Month" value={selectedMonthValue} placeholder="Select Month"
+                                        options={monthOptions} onchange={handleFilterChangeApproved}>
+                                    </lightning-combobox>
+    &nbsp;
+                <lightning-combobox name="Year Filter"
+                                    label="Year" value={selectedYearValue} placeholder="Select Year"
+                                    options={yearOptions} onchange={handleFilterChangeApproved}>
+                                </lightning-combobox>
+                                &nbsp;
+               <lightning-combobox name="Technology Filter"
+                                        label="Technology" value={selectedTechnologyValue} placeholder="Select technology"
+                                        options={technologyOptions} onchange={handleFilterChangeApproved}>
+                                    </lightning-combobox>
+       
+    </div>
+    <br>
+    <template if:true={approvedIdeas.data}>
+        <lightning-datatable data={approvedIdeas.data} columns={ApprovedIdeacolumn} key-field="Id"
+            hide-checkbox-column="true" onrowaction={rowHandler}>
+        </lightning-datatable>
+
+    </template>
+</template>
+
+
+<template if:true={scoreflag}>
+<br>
+    <template if:true={scores.data}>
+        <lightning-datatable data={scores.data} columns={scorecolumn} key-field="Id" hide-checkbox-column="true"
+            onrowaction={rowHandler}>
+        </lightning-datatable>
+
+    </template>
+</template>
+
+</template>

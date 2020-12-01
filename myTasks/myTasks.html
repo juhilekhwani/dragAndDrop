@@ -1,0 +1,14 @@
+<template>
+    <template if:true={allTasks.length}>
+        <p>{notaskmsg}</p>
+        <lightning-datatable data={allTasks} columns={columntask} key-field="Id" hide-checkbox-column="true"
+    
+        
+        >
+        </lightning-datatable>
+
+    </template>
+    <template if:false={allTasks.length}>
+        <p>Currently no task assigned to you.</p>
+        </template>
+</template>

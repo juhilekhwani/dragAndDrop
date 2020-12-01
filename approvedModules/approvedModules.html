@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="See Approved Modules" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+    <!-- <lightning-input type="checkbox" label="Show Pending Modules" onchange={pendingHandler}></lightning-input> -->
+    <lightning-input label="Show Approved Modules " type="checkbox" onchange={checkboxHandler}></lightning-input>
+        </div>
+        </lightning-card>
+         <template if:true={ApprovedM}> 
+            <lightning-card title="Approved Modules" icon-name="custom:custom63">
+
+                <div class="slds-m-around_medium">
+                    <template if:true={approvedModules.data}>
+                        <lightning-datatable
+                            key-field="Id"
+                            data={approvedModules.data}
+                            columns={approved}
+                            onrowaction={navigateToRecordViewPage}
+                           >
+                        </lightning-datatable>
+                    </template>
+                   
+                </div>
+                
+            </lightning-card>
+         </template> 
+       
+</template>

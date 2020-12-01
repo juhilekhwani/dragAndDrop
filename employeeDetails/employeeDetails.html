@@ -1,0 +1,25 @@
+<!-- <template>
+    <lightning-card>
+        <lightning-record-view-form layout-type="Full" object-api-name="Employee__c" record-id={recordId}>
+
+
+        </lightning-record-view-form>
+    </lightning-card>
+</template> -->
+
+<template>
+    <lightning-record-view-form
+            record-id={recordId}
+            object-api-name="Employee__c">
+        <div class="slds-box debox">
+            <lightning-output-field field-name="Profile_Picture__c"></lightning-output-field>
+            <lightning-output-field field-name="Employee_ID__c"></lightning-output-field>
+            <lightning-output-field field-name="Name"></lightning-output-field>
+           
+            <lightning-output-field style="cursor: default; pointer-events: none; text-decoration: none; color:black;" field-name="Email__c"></lightning-output-field>
+            <lightning-output-field field-name="Location__c"></lightning-output-field>
+            <lightning-output-field style="cursor: default; pointer-events: none; text-decoration: none; color:black;" field-name="Project__c"></lightning-output-field>
+            <lightning-output-field field-name="Team__c"></lightning-output-field>
+        </div>
+    </lightning-record-view-form>
+</template>

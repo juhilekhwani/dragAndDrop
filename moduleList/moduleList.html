@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Pending Modules" icon-name="custom:custom63">
+
+        <div class="slds-m-around_medium">
+            <template if:true={pendingModules.data}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={pendingModules.data}
+                    columns={pendingColumns}
+                    
+                   >
+                </lightning-datatable>
+            </template>
+           
+        </div>
+    </lightning-card>
+</template>

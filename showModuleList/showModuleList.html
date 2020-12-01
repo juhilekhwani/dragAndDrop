@@ -1,0 +1,48 @@
+<template>
+    <lightning-card title="Rejected Modules" icon-name="custom:custom63">
+
+        <div class="slds-m-around_medium">
+            <template if:true={rejectedModules.data}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={rejectedModules.data}
+                    columns={rejected}
+                    
+                   >
+                </lightning-datatable>
+            </template>
+           
+        </div>
+    </lightning-card>
+    <lightning-card title="Pending Modules" icon-name="custom:custom63">
+
+        <div class="slds-m-around_medium">
+            <template if:true={pendingModules.data}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={pendingModules.data}
+                    columns={pending}
+                    onrowaction ={rowHandler}
+                   >
+                </lightning-datatable>
+            </template>
+           
+        </div>
+    </lightning-card>
+    <lightning-card title="Approved Modules" icon-name="custom:custom63">
+
+        <div class="slds-m-around_medium">
+            <template if:true={approvedModules.data}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={approvedModules.data}
+                    columns={approved}
+                    
+                   >
+                </lightning-datatable>
+            </template>
+           
+        </div>
+    </lightning-card>
+    
+</template>

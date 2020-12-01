@@ -1,0 +1,65 @@
+<template>
+    <template if:true={displayflag}>
+
+        <b>
+            <h1 style="font-size:30px;color:tomato;">
+                <p>{title}</p>
+            </h1>
+        </b>
+        <br>
+        <div class="acc-container">
+            <lightning-record-view-form record-id={recordId} object-api-name="Idea__c">
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Name"></lightning-output-field>
+                        <lightning-output-field field-name="Technology__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name="Description__c"></lightning-output-field>
+
+                    </div>
+                </div>
+            </lightning-record-view-form>
+        </div>
+
+
+        <template if:true={ratingflag}>
+            <b> Please rate the idea:</b>
+            <div class="slds-m-top_medium slds-m-bottom_x-large">
+                <div class="slds-p-around_medium lgc-bg">
+                      <lightning-tile type="media">
+
+                        <div class="rate">
+                            <input type="radio" id="star5" name="Delivery" value="5" onchange={rating} />
+                            <label for="star5" title="text">5 stars</label>
+                            <input type="radio" id="star4" name="Delivery" value="4" onchange={rating} />
+                            <label for="star4" title="text">4 stars</label>
+                            <input type="radio" id="star3" name="Delivery" value="3" onchange={rating} />
+                            <label for="star3" title="text">3 stars</label>
+                            <input type="radio" id="star2" name="Delivery" value="2" onchange={rating} />
+                            <label for="star2" title="text">2 stars</label>
+                            <input type="radio" id="star1" name="Delivery" value="1" onchange={rating} />
+                            <label for="star1" title="text">1 star</label>
+                        </div>
+                    </lightning-tile>
+                   
+                    <br>
+                    Comment:<lightning-input value={comment} onchange={onComment}  placeholder="" required="" aria-describedby="form-error-01"  aria-invalid="true" ></lightning-input>
+                    <lightning-button  variant="brand" label="Submit" onclick={getvalues}> </lightning-button>
+                </div>
+            </div>
+            <p>Reviews submitted by users:</p>
+
+            <template if:true={reviews.data}>
+                <lightning-datatable data={reviews.data} columns={columns} key-field="Id" hide-checkbox-column="true">
+
+                </lightning-datatable>
+            </template>
+            <template if:false={reviews.data}>
+                <p>No reviews submitted by users</p>
+            </template>
+
+        </template>
+    </template>
+
+</template>

@@ -1,0 +1,32 @@
+<template>
+    
+<template if:true={flag}>
+    
+    <lightning-card title="Create Idea">
+ <lightning-record-form object-api-name='Idea__c' fields={fields} onsubmit={handlesubmitIdea} onsuccess={handleSuccess}>
+    <lightning-messages></lightning-messages>
+</lightning-record-form>
+<p style="color:red">Employees can submit 2 ideas a day</p>
+
+</lightning-card>
+
+</template>
+
+<template if:true={uploadbutton}>
+    
+    <lightning-button label="Upload document" onclick={uploadDocument}></lightning-button>
+    <lightning-button label="Cancel" onclick={cancel}></lightning-button>
+    
+</template>
+
+<template if:true={fileflag}>
+    <lightning-card icon-name="custom:custom19" class="borderform">
+    <p style="color:red">File Formats supported are TXT,PDF,EXL,PPT,DOC </p>
+    <p style="color:red">MAX File size supported is 100KB  </p>
+        <lightning-input type="file"  label="Attachment" 
+            onchange={handleFilesChange} multiple>
+        </lightning-input>
+    </lightning-card>
+</template>
+
+</template>

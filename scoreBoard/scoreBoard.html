@@ -1,0 +1,8 @@
+<template>
+    <template if:true={scores.data}>
+        <lightning-datatable data={scores.data} columns={scorecolumn} key-field="Id" hide-checkbox-column="true"
+            onrowaction={rowHandler}>
+        </lightning-datatable>
+
+    </template>
+</template>

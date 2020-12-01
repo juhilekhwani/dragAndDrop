@@ -1,0 +1,8 @@
+.employee-tile {
+    border: 1px solid #d2955d;
+    border-radius: .25rem;
+    display: block;
+}
+.employee-profile-image {
+    height: 100px;
+}

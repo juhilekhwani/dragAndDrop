@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="See Rejected Modules" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+    <!-- <lightning-input type="checkbox" label="Show Pending Modules" onchange={pendingHandler}></lightning-input> -->
+    <lightning-input label="Show Rejected Modules " type="checkbox" onchange={checkboxHandler}></lightning-input>
+        </div>
+        </lightning-card>
+         <template if:true={RejectedM}> 
+            <lightning-card title="Rejected Modules" icon-name="custom:custom63">
+
+                <div class="slds-m-around_medium">
+                    <template if:true={rejectedModules.data}>
+                        <lightning-datatable
+                            key-field="Id"
+                            data={rejectedModules.data}
+                            columns={rejected}
+                            onrowaction={navigateToRecordViewPage}
+                           >
+                        </lightning-datatable>
+                    </template>
+                   
+                </div>
+            </lightning-card>
+         </template> 
+       
+</template>

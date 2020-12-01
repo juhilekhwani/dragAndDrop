@@ -1,0 +1,48 @@
+<template>
+    <h2> Rejected Idea List</h2>
+
+
+    <div class="slds-list_horizontal slds-has-inline-block-links_space">
+           
+        <lightning-combobox name="Month Filter"
+                                        label="Month" value={selectedMonthValue} placeholder="Select Month"
+                                        options={monthOptions} onchange={handleFilterChange}>
+                                    </lightning-combobox>
+    &nbsp;
+                <lightning-combobox name="Year Filter"
+                                    label="Year" value={selectedYearValue} placeholder="Select Year"
+                                    options={yearOptions} onchange={handleFilterChange}>
+                                </lightning-combobox>
+                                &nbsp;
+               <lightning-combobox name="Technology Filter"
+                                        label="Technology" value={selectedTechnologyValue} placeholder="Select technology"
+                                        options={technologyOptions} onchange={handleFilterChange}>
+                                    </lightning-combobox>
+       
+    </div>
+    <br>
+    <!--<lightning-layout multiple-rows="true" vertical-align="end">
+        <lightning-layout-item size="12" small-device-size="10" medium-device-size="8" large-device-size="6"
+            padding="around-small">
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <lightning-input type="text" value={Name} onchange={handleName}></lightning-input>
+                </div>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" small-device-size="2" medium-device-size="2" large-device-size="2"
+            padding="around-small">
+            <lightning-button label="Search" variant="brand" onclick={handleRejectedNameSearch}></lightning-button>
+        </lightning-layout-item>
+    </lightning-layout><br />-->
+    <template if:true={ideas.length}>
+        <lightning-datatable data={ideas} columns={RejectIdeacolumns} key-field="Id"
+            hide-checkbox-column="true" onrowaction={rowHandler}>
+        </lightning-datatable>
+
+    </template> 
+    <template if:false={ideas.length}>
+        <p>No ideas available for this search</p>
+        </template>
+
+</template>

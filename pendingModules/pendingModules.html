@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="See Pending Modules" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+    <!-- <lightning-input type="checkbox" label="Show Pending Modules" onchange={pendingHandler}></lightning-input> -->
+    <lightning-input label="Show Pending Modules " type="checkbox" onchange={checkboxHandler}></lightning-input>
+        </div>
+        </lightning-card>
+         <template if:true={PendingM}> 
+            <lightning-card title="Pending Modules" icon-name="custom:custom63">
+
+                <div class="slds-m-around_medium">
+                    <template if:true={pendingModules.data}>
+                        <lightning-datatable
+                            key-field="Id"
+                            data={pendingModules.data}
+                            columns={pending}
+                            onrowaction ={rowHandler}
+                           >
+                        </lightning-datatable>
+                    </template>
+                   
+                </div>
+            </lightning-card>
+         </template> 
+       
+</template>
